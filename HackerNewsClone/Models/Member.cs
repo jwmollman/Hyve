@@ -13,8 +13,8 @@ namespace HackerNewsClone.Models {
 
         public Profile Profile { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public IList<Post> Posts { get; set; }
 
-        public List<Comment> Comments { get; set; }
+        public IList<Comment> Comments { get; set; }
     }
 }

@@ -13,6 +13,6 @@ namespace HackerNewsClone.Models {
 
         public Post Post { get; set; }
 
-        public List<Comment> Comments { get; set; }
+        public IList<Comment> Comments { get; set; }
     }
 }
