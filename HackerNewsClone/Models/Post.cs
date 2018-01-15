@@ -11,7 +11,7 @@ namespace HackerNewsClone.Models {
 
         public string Content { get; set; }
 
-        public Member CreatedByMember { get; set; }
+        public User CreatedBy { get; set; }
 
         public IList<Comment> Comments { get; set; }
     }

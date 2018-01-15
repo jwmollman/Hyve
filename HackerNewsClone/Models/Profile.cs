@@ -12,6 +12,6 @@ namespace HackerNewsClone.Models {
         public string Bio { get; set; }
 
         [Required]
-        public Member Member { get; set; }
+        public User User { get; set; }
     }
 }

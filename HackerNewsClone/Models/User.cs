@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 
 namespace HackerNewsClone.Models {
-    public class Member {
-        public int ID { get; set; }
-
+    public class User : IdentityUser {
         public DateTime DateCreated { get; set; }
 
         public DateTime DateUpdated { get; set; }
-
-        public string Username { get; set; }
 
         public Profile Profile { get; set; }
 
