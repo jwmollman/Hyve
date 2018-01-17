@@ -27,8 +27,8 @@ namespace HackerNewsClone.Controllers {
                 User newUser = new User() {
                     UserName = model.Username,
                     Email = model.EmailAddress,
-                    DateCreated = DateTime.Now,
-                    DateUpdated = DateTime.Now,
+                    DateCreatedUtc = DateTime.Now,
+                    DateUpdatedUtc = DateTime.Now,
                     LockoutEndDateUtc = DateTime.MaxValue,
                     Profile = new Profile(),
                     Posts = new List<Post>(),
