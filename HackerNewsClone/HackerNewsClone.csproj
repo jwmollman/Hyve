@@ -170,6 +170,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Home\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -180,6 +181,7 @@
     <Content Include="Content\Scripts\Lib\jQuery\jquery-3.2.1.slim.min.map" />
     <Content Include="Content\Scripts\Lib\jQuery\jquery-3.2.1.min.map" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -190,7 +192,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Styles\Lib\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\Account\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201801140408042_Initial.resx">
