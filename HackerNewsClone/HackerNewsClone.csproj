@@ -158,6 +158,10 @@
     <Compile Include="Migrations\201801142128593_AddAspNetIdentity.Designer.cs">
       <DependentUpon>201801142128593_AddAspNetIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801170338587_RenameModelIdColumns.cs" />
+    <Compile Include="Migrations\201801170338587_RenameModelIdColumns.Designer.cs">
+      <DependentUpon>201801170338587_RenameModelIdColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Contexts\HackerNewsCloneDbContext.cs" />
@@ -194,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801142128593_AddAspNetIdentity.resx">
       <DependentUpon>201801142128593_AddAspNetIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801170338587_RenameModelIdColumns.resx">
+      <DependentUpon>201801170338587_RenameModelIdColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

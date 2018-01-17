@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HackerNewsClone.Models {
     public class Profile {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public DateTime DateCreated { get; set; }
 

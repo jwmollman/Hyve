@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HackerNewsClone.Models {
     public class Post {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public DateTime DateCreated { get; set; }
 
