@@ -4,7 +4,9 @@
     ViewBag.Title = "Register";
 }
 
-<h1>Register</h1>
+<h1>@ViewBag.Title</h1>
+
+@Html.ValidationSummary()
 
 @using (Html.BeginForm("Register", "Home", FormMethod.Post)) {
     @Html.AntiForgeryToken()
@@ -21,12 +23,12 @@
         </tr>
         <tr>
             <td>@Html.LabelFor(m => m.Password)</td>
-            <td>@Html.TextBoxFor(m => m.Password)</td>
+            <td>@Html.PasswordFor(m => m.Password)</td>
             <td>@Html.ValidationMessageFor(m => m.Password)</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(m => m.PasswordConfirm)</td>
-            <td>@Html.TextBoxFor(m => m.PasswordConfirm)</td>
+            <td>@Html.PasswordFor(m => m.PasswordConfirm)</td>
             <td>@Html.ValidationMessageFor(m => m.PasswordConfirm)</td>
         </tr>
         <tr>

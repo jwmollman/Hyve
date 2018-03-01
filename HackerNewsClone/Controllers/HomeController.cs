@@ -1,24 +1,29 @@
-﻿using HackerNewsClone.Models;
+﻿using HackerNewsClone.App_Start;
+using HackerNewsClone.Models;
+using HackerNewsClone.Models.Contexts;
 using HackerNewsClone.ViewModels.Home;
-using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace HackerNewsClone.Controllers {
-    public class HomeController : BaseController {
+    [AllowAnonymous]
+    public class HomeController : Controller {
+        [HttpGet]
         public ActionResult Index() {
             return View();
         }
 
+        [HttpGet]
         public ActionResult Register() {
             return View(new RegisterViewModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel model) {
+        public async Task<ActionResult> Register(RegisterViewModel model) {
             try {
                 if (!ModelState.IsValid) {
                     return View(model);
@@ -29,26 +34,50 @@ namespace HackerNewsClone.Controllers {
                     Email = model.EmailAddress,
                     DateCreatedUtc = DateTime.Now,
                     DateUpdatedUtc = DateTime.Now,
-                    LockoutEndDateUtc = DateTime.MaxValue,
-                    Profile = new Profile(),
-                    Posts = new List<Post>(),
-                    Comments = new List<Comment>(),
                 };
 
-                IdentityResult result = UserManager.Create(newUser, model.Password);
+                UserStore userStore = new UserStore(new HackerNewsCloneDbContext());
+                UserManager userManager = new UserManager(userStore);
+                var result = await userManager.CreateAsync(newUser, model.Password);
                 if (result.Succeeded) {
-                    UserManager.AddToRole(newUser.Id, "User");
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Index");
+                } else {
+                    AddErrorsToModelState(result.Errors);
+                }
+            } catch (Exception e) {
+                ModelState.AddModelError(string.Empty, e.Message);
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Login() {
+            return View(new LoginViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginViewModel model) {
+            try {
+                if (!ModelState.IsValid) {
+                    return View(model);
                 }
 
-                return View(model);
+                // login
             } catch (Exception e) {
-                throw new Exception(e.Message);
+                ModelState.AddModelError(string.Empty, e.Message);
             }
+
+            return View(model);
         }
 
-        public ActionResult Login() {
-            return View();
+        #region Helper Methods
+        private void AddErrorsToModelState(IEnumerable errors) {
+            foreach (string error in errors) {
+                ModelState.AddModelError(string.Empty, error);
+            }
         }
+        #endregion
     }
 }

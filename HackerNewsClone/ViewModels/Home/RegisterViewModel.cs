@@ -8,6 +8,7 @@ namespace HackerNewsClone.ViewModels.Home {
 
         [Required(ErrorMessage = "Enter your email address")]
         [Display(Name = "Email")]
+        [EmailAddress(ErrorMessage = "Enter a valid email address")]
         public string EmailAddress { get; set; }
 
         [Required(ErrorMessage = "Enter your password")]

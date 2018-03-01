@@ -1,20 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using HackerNewsClone.Models;
+using HackerNewsClone.Models.Contexts;
 using Microsoft.AspNet.Identity;
-using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
-using Owin;
-
-[assembly: OwinStartup(typeof(HackerNewsClone.App_Start.IdentityConfig))]
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HackerNewsClone.App_Start {
-    public class IdentityConfig {
-        public void Configuration(IAppBuilder app) {
-            CookieAuthenticationOptions cookieOptions = new CookieAuthenticationOptions();
-            cookieOptions.AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie;
-            cookieOptions.LoginPath = new PathString("~/login");
+    public class UserStore : UserStore<User> {
+        public UserStore(HackerNewsCloneDbContext dbContext) : base(dbContext) {
+        }
+    }
 
-            app.UseCookieAuthentication(cookieOptions);
+    public class UserManager : UserManager<User> {
+        public UserManager(IUserStore<User> userStore) : base(userStore) {
         }
     }
 }
