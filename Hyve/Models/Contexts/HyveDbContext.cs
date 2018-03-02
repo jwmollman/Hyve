@@ -9,5 +9,9 @@ namespace Hyve.Models.Contexts {
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
+
+        public static HyveDbContext Create() {
+            return new HyveDbContext();
+        }
     }
 }

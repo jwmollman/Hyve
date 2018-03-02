@@ -8,7 +8,7 @@
 
 @Html.ValidationSummary()
 
-@using (Html.BeginForm("Login", "Home", FormMethod.Post)) {
+@using (Html.BeginForm("Login", "Home", new { redirect = ViewBag.RedirectUrl }, FormMethod.Post)) {
     @Html.AntiForgeryToken()
     <table>
         <tr>
@@ -20,6 +20,10 @@
             <td>@Html.LabelFor(m => m.Password)</td>
             <td>@Html.PasswordFor(m => m.Password)</td>
             <td>@Html.ValidationMessageFor(m => m.Password)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.RememberMe)</td>
+            <td>@Html.CheckBoxFor(m => m.RememberMe)</td>
         </tr>
         <tr>
             <td></td>

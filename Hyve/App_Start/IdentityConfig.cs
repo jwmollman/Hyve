@@ -2,6 +2,9 @@
 using Hyve.Models.Contexts;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
+using Microsoft.Owin.Security;
 
 namespace Hyve.App_Start {
     public class UserStore : UserStore<User> {
@@ -11,6 +14,21 @@ namespace Hyve.App_Start {
 
     public class UserManager : UserManager<User> {
         public UserManager(IUserStore<User> userStore) : base(userStore) {
+        }
+
+        public static UserManager Create(IdentityFactoryOptions<UserManager> options, IOwinContext context) {
+            UserStore<User> userStore = new UserStore<User>(context.Get<HyveDbContext>());
+            UserManager userManager = new UserManager(userStore);
+            return userManager;
+        }
+    }
+
+    public class SignInManager : SignInManager<User, string> {
+        public SignInManager(UserManager userManager, IAuthenticationManager authManager) : base(userManager, authManager) {
+        }
+
+        public static SignInManager Create(IdentityFactoryOptions<SignInManager> options, IOwinContext context) {
+            return new SignInManager(context.GetUserManager<UserManager>(), context.Authentication);
         }
     }
 }

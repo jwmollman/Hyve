@@ -1,0 +1,9 @@
+﻿@model Hyve.ViewModels.Account.DashboardViewModel
+
+@{
+    ViewBag.Title = "Account";
+}
+
+<h1>account</h1>
+<p>you are logged in as @Model.Username</p>
+<p>@Html.ActionLink("log out", "Logout", "Account")</p>

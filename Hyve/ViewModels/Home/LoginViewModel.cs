@@ -9,5 +9,8 @@ namespace Hyve.ViewModels.Home {
         [Required(ErrorMessage = "Enter your password")]
         [Display(Name = "Password")]
         public string Password { get; set; }
+
+        [Display(Name = "Remember me")]
+        public bool RememberMe { get; set; }
     }
 }
