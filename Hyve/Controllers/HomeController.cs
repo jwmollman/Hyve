@@ -74,7 +74,11 @@ namespace Hyve.Controllers {
 
                 switch (result) {
                     case SignInStatus.Success:
-                        return Redirect(redirect);
+                        if (!string.IsNullOrEmpty(redirect)) {
+                            return Redirect(redirect);
+                        } else {
+                            return RedirectToAction("Index", "Account");
+                        }
                     case SignInStatus.LockedOut:
                         return View("LockedOut");
                     case SignInStatus.Failure:
