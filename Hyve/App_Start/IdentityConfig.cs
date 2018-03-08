@@ -18,8 +18,7 @@ namespace Hyve.App_Start {
 
         public static UserManager Create(IdentityFactoryOptions<UserManager> options, IOwinContext context) {
             UserStore<User> userStore = new UserStore<User>(context.Get<HyveDbContext>());
-            UserManager userManager = new UserManager(userStore);
-            return userManager;
+            return new UserManager(userStore);
         }
     }
 
@@ -28,7 +27,7 @@ namespace Hyve.App_Start {
         }
 
         public static SignInManager Create(IdentityFactoryOptions<SignInManager> options, IOwinContext context) {
-            return new SignInManager(context.GetUserManager<UserManager>(), context.Authentication);
+            return new SignInManager(context.Get<UserManager>(), context.Authentication);
         }
     }
 }

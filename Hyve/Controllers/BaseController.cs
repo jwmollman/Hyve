@@ -5,25 +5,16 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Hyve.Controllers {
-    public class BaseController : Controller {
-        private UserManager _userManager;
-        private SignInManager _signInManager;
-
+    public abstract class BaseController : Controller {
         public UserManager UserManager {
             get {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<UserManager>();
-            }
-            private set {
-                _userManager = value;
+                return HttpContext.GetOwinContext().Get<UserManager>();
             }
         }
 
         public SignInManager SignInManager {
             get {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<SignInManager>();
-            }
-            private set {
-                _signInManager = value;
+                return HttpContext.GetOwinContext().Get<SignInManager>();
             }
         }
 
