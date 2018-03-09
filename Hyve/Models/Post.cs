@@ -9,6 +9,8 @@ namespace Hyve.Models {
 
         public DateTime DateUpdatedUtc { get; set; }
 
+        public string Title { get; set; }
+
         public string Content { get; set; }
 
         public User CreatedBy { get; set; }

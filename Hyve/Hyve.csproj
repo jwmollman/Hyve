@@ -176,6 +176,10 @@
     <Compile Include="Migrations\201803090255566_ReworkRoles.Designer.cs">
       <DependentUpon>201803090255566_ReworkRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803090257176_AddPostTitle.cs" />
+    <Compile Include="Migrations\201803090257176_AddPostTitle.Designer.cs">
+      <DependentUpon>201803090257176_AddPostTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Contexts\HyveDbContext.cs" />
@@ -227,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803090255566_ReworkRoles.resx">
       <DependentUpon>201803090255566_ReworkRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803090257176_AddPostTitle.resx">
+      <DependentUpon>201803090257176_AddPostTitle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
