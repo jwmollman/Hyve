@@ -22,6 +22,16 @@ namespace Hyve.App_Start {
         }
     }
 
+    public class RoleManager : RoleManager<IdentityRole> {
+        public RoleManager(RoleStore<IdentityRole> roleStore) : base(roleStore) {
+        }
+
+        public static RoleManager Create(IdentityFactoryOptions<RoleManager> options, IOwinContext context) {
+            RoleStore<IdentityRole> roleStore = new RoleStore<IdentityRole>(context.Get<HyveDbContext>());
+            return new RoleManager(roleStore);
+        }
+    }
+
     public class SignInManager : SignInManager<User, string> {
         public SignInManager(UserManager userManager, IAuthenticationManager authManager) : base(userManager, authManager) {
         }

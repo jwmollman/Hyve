@@ -10,6 +10,7 @@ namespace Hyve {
         public void ConfigureAuth(IAppBuilder app) {
             app.CreatePerOwinContext(HyveDbContext.Create);
             app.CreatePerOwinContext<UserManager>(UserManager.Create);
+            app.CreatePerOwinContext<RoleManager>(RoleManager.Create);
             app.CreatePerOwinContext<SignInManager>(SignInManager.Create);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions() {

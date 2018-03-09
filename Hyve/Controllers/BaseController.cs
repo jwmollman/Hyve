@@ -12,6 +12,12 @@ namespace Hyve.Controllers {
             }
         }
 
+        public RoleManager RoleManager {
+            get {
+                return HttpContext.GetOwinContext().Get<RoleManager>();
+            }
+        }
+
         public SignInManager SignInManager {
             get {
                 return HttpContext.GetOwinContext().Get<SignInManager>();
