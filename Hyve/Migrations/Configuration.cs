@@ -18,9 +18,9 @@ namespace Hyve.Migrations {
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            if (!System.Diagnostics.Debugger.IsAttached) {
-                System.Diagnostics.Debugger.Launch();
-            }
+            //if (!System.Diagnostics.Debugger.IsAttached) {
+            //    System.Diagnostics.Debugger.Launch();
+            //}
 
             AddRoles();
             AddUsers();
@@ -56,10 +56,11 @@ namespace Hyve.Migrations {
             if (user1 == null) {
                 IdentityResult result = userManager.Create(new User() {
                     UserName = user1Username,
-                    Email = "me@johnmollman.com",
+                    Email = "user1@email.com",
                     PasswordHash = new PasswordHasher().HashPassword("password"),
                     DateCreatedUtc = DateTime.Now,
                     DateUpdatedUtc = DateTime.Now,
+                    Enabled = true,
                 });
                 if (result.Succeeded) {
                     User user = userManager.FindByName(user1Username);
@@ -72,10 +73,11 @@ namespace Hyve.Migrations {
             if (user2 == null) {
                 IdentityResult result = userManager.Create(new User() {
                     UserName = user2Username,
-                    Email = "test@email.com",
+                    Email = "user2@email.com",
                     PasswordHash = new PasswordHasher().HashPassword("password"),
                     DateCreatedUtc = DateTime.Now,
                     DateUpdatedUtc = DateTime.Now,
+                    Enabled = true,
                 });
                 if (result.Succeeded) {
                     User user = userManager.FindByName(user2Username);
