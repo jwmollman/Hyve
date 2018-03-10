@@ -7,6 +7,7 @@ namespace Hyve.Migrations {
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Hyve.Models.Contexts.HyveDbContext> {
         public Configuration() {
@@ -28,6 +29,7 @@ namespace Hyve.Migrations {
             AddRoles();
             AddUsers();
             AddPostTypes();
+            AddPosts();
         }
 
         private void AddRoles() {
@@ -117,6 +119,26 @@ namespace Hyve.Migrations {
                     new PostType() { Name = PostTypes.Link },
                     new PostType() { Name = PostTypes.Question },
                 });
+                db.SaveChanges();
+            }
+        }
+
+        private void AddPosts() {
+            using (HyveDbContext db = new HyveDbContext()) {
+                User user1 = db.Users.Where(x => x.UserName == "user1").First();
+                for (int i = 0; i < 50; i++) {
+                    db.Posts.Add(new Post() {
+                        DateCreatedUtc = DateTime.Now,
+                        DateUpdatedUtc = DateTime.Now,
+                        Title = $"This is post #{i}",
+                        Content = $"Content for post #{i}",
+                        CreatedBy = user1,
+                        PostType = db.PostTypes.Where(x => x.Name == PostTypes.Link).First(),
+                        Enabled = true,
+                        Comments = new List<Comment>(),
+                    });
+                }
+
                 db.SaveChanges();
             }
         }
