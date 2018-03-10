@@ -5,6 +5,7 @@ namespace Hyve.Migrations {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Hyve.Models.Contexts.HyveDbContext> {
@@ -18,12 +19,15 @@ namespace Hyve.Migrations {
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            //if (!System.Diagnostics.Debugger.IsAttached) {
-            //    System.Diagnostics.Debugger.Launch();
-            //}
+#if DEBUG
+            if (!System.Diagnostics.Debugger.IsAttached) {
+                System.Diagnostics.Debugger.Launch();
+            }
+#endif
 
             AddRoles();
             AddUsers();
+            AddPostTypes();
         }
 
         private void AddRoles() {
@@ -83,6 +87,16 @@ namespace Hyve.Migrations {
                     User user = userManager.FindByName(user2Username);
                     userManager.AddToRole(user.Id, Roles.Normal);
                 }
+            }
+        }
+
+        private void AddPostTypes() {
+            using (HyveDbContext db = new HyveDbContext()) {
+                db.PostTypes.AddRange(new List<PostType>() {
+                    new PostType() { Name = PostTypes.Link },
+                    new PostType() { Name = PostTypes.Question },
+                });
+                db.SaveChanges();
             }
         }
     }

@@ -15,6 +15,8 @@ namespace Hyve.Models {
 
         public User CreatedBy { get; set; }
 
+        public PostType PostType { get; set; }
+
         public bool Enabled { get; set; }
 
         public IList<Comment> Comments { get; set; }

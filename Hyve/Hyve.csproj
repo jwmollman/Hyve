@@ -152,6 +152,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Enums\PostTypes.cs" />
     <Compile Include="Enums\Roles.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -180,10 +181,15 @@
     <Compile Include="Migrations\201803090257176_AddPostTitle.Designer.cs">
       <DependentUpon>201803090257176_AddPostTitle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803100325382_AddPostTypes.cs" />
+    <Compile Include="Migrations\201803100325382_AddPostTypes.Designer.cs">
+      <DependentUpon>201803100325382_AddPostTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Contexts\HyveDbContext.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostType.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -235,6 +241,9 @@
     <EmbeddedResource Include="Migrations\201803090257176_AddPostTitle.resx">
       <DependentUpon>201803090257176_AddPostTitle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803100325382_AddPostTypes.resx">
+      <DependentUpon>201803100325382_AddPostTypes.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -247,7 +256,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>12259</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
