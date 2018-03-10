@@ -64,11 +64,23 @@ namespace Hyve.Migrations {
                     PasswordHash = new PasswordHasher().HashPassword("password"),
                     DateCreatedUtc = DateTime.Now,
                     DateUpdatedUtc = DateTime.Now,
+                    Profile = null,
+                    Posts = new List<Post>(),
+                    Comments = new List<Comment>(),
                     Enabled = true,
                 });
                 if (result.Succeeded) {
                     User user = userManager.FindByName(user1Username);
                     userManager.AddToRole(user.Id, Roles.Administrator);
+                    using (HyveDbContext db = new HyveDbContext()) {
+                        db.Profiles.Add(new Profile() {
+                            UserId = user.Id,
+                            DateCreatedUtc = DateTime.Now,
+                            DateUpdatedUtc = DateTime.Now,
+                            Bio = $"This is the bio for {user1Username}.",
+                        });
+                        db.SaveChanges();
+                    }
                 }
             }
 
@@ -86,6 +98,15 @@ namespace Hyve.Migrations {
                 if (result.Succeeded) {
                     User user = userManager.FindByName(user2Username);
                     userManager.AddToRole(user.Id, Roles.Normal);
+                    using (HyveDbContext db = new HyveDbContext()) {
+                        db.Profiles.Add(new Profile() {
+                            UserId = user.Id,
+                            DateCreatedUtc = DateTime.Now,
+                            DateUpdatedUtc = DateTime.Now,
+                            Bio = $"This is the bio for {user2Username}.",
+                        });
+                        db.SaveChanges();
+                    }
                 }
             }
         }
