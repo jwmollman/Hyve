@@ -1,9 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hyve.Models {
     public class Profile {
-        public int Id { get; set; }
+        [Key]
+        [ForeignKey("User")]
+        public string UserId { get; set; }
 
         public DateTime DateCreatedUtc { get; set; }
 
@@ -11,7 +14,6 @@ namespace Hyve.Models {
 
         public string Bio { get; set; }
 
-        [Required]
         public User User { get; set; }
     }
 }
