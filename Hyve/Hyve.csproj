@@ -189,6 +189,10 @@
     <Compile Include="Migrations\201803102324106_ModifyUserToProfileRelationship.Designer.cs">
       <DependentUpon>201803102324106_ModifyUserToProfileRelationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803120301239_CommentsAddRelatedUser.cs" />
+    <Compile Include="Migrations\201803120301239_CommentsAddRelatedUser.Designer.cs">
+      <DependentUpon>201803120301239_CommentsAddRelatedUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Contexts\HyveDbContext.cs" />
@@ -250,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803102324106_ModifyUserToProfileRelationship.resx">
       <DependentUpon>201803102324106_ModifyUserToProfileRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803120301239_CommentsAddRelatedUser.resx">
+      <DependentUpon>201803120301239_CommentsAddRelatedUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
