@@ -11,6 +11,8 @@ namespace Hyve.Models {
 
         public string Title { get; set; }
 
+        public string ExternalLink { get; set; }
+
         public string Content { get; set; }
 
         public User CreatedBy { get; set; }

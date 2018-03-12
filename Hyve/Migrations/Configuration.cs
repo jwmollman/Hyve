@@ -126,14 +126,30 @@ namespace Hyve.Migrations {
         private void AddPosts() {
             using (HyveDbContext db = new HyveDbContext()) {
                 User user1 = db.Users.Where(x => x.UserName == "user1").First();
-                for (int i = 0; i < 50; i++) {
+
+                for (int i = 0; i < 30; i++) {
                     db.Posts.Add(new Post() {
                         DateCreatedUtc = DateTime.Now,
                         DateUpdatedUtc = DateTime.Now,
                         Title = $"This is post #{i}",
-                        Content = $"Content for post #{i}",
+                        ExternalLink = "https://www.google.com",
+                        Content = null,
                         CreatedBy = user1,
                         PostType = db.PostTypes.Where(x => x.Name == PostTypes.Link).First(),
+                        Enabled = true,
+                        Comments = new List<Comment>(),
+                    });
+                }
+
+                for (int i = 0; i < 30; i++) {
+                    db.Posts.Add(new Post() {
+                        DateCreatedUtc = DateTime.Now,
+                        DateUpdatedUtc = DateTime.Now,
+                        Title = $"This is post #{i}",
+                        ExternalLink = null,
+                        Content = $"Content for post #{i}",
+                        CreatedBy = user1,
+                        PostType = db.PostTypes.Where(x => x.Name == PostTypes.Question).First(),
                         Enabled = true,
                         Comments = new List<Comment>(),
                     });
