@@ -1,5 +1,78 @@
-﻿#main {
-    background-color: #eee;
+﻿body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    background-color: #fff;
+    color: #111;
+    display: flex;
+    flex-direction: column;
+}
+
+#header {
+    background-color: #593d7b;
+    color: #fff;
+}
+
+#header .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#content {
+}
+
+#footer {
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+#footer .container {
+    border-top: 1px solid #ddd;
+}
+
+.container {
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 960px;
+    padding: 15px;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.links .active {
+    background-color: rgba(255, 255, 255, 0.25);
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px 13px;
+}
+
+.links a {
+    display: block;
+}
+
+.links > div {
+    align-items: center;
+    display: flex;
+    margin-right: 15px;
+}
+
+.links > div:last-child {
+    margin-right: 0;
+}
+
+.links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo a {
+    font-weight: bold;
 }
