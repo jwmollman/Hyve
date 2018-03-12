@@ -18,22 +18,13 @@
         <div id="main">
             <div id="header">
                 <div class="container">
-                    <div class="links site">
-                        @* logo here *@
-                        <div class="logo active">
-                            @Html.ActionLink("Hyve", "Index", "Home")
-                        </div>
-                        <div>
-                            @Html.ActionLink("Ask", "Ask", "Home")
-                        </div>
+                    <div class="link-container">
+                        <div class="logo">@Html.ActionLink("Hyve", "Index", "Home")</div>
+                        <div>@Html.ActionLink("Ask", "Ask", "Home")</div>
                     </div>
-                    <div class="links account">
-                        <div>
-                            @Html.ActionLink("Register", "Register", "Home")
-                        </div>
-                        <div>
-                            @Html.ActionLink("Log in", "Login", "Home")
-                        </div>
+                    <div class="link-container">
+                        <div>@Html.ActionLink("Register", "Register", "Home")</div>
+                        <div>@Html.ActionLink("Log in", "Login", "Home")</div>
                     </div>
                 </div>
             </div>

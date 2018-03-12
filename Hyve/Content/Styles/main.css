@@ -13,7 +13,7 @@
 }
 
 #header {
-    background-color: #593d7b;
+    background-color: #ea7c16;
     color: #fff;
 }
 
@@ -27,12 +27,12 @@
 }
 
 #footer {
-    font-size: 0.75rem;
-    text-align: center;
 }
 
 #footer .container {
     border-top: 1px solid #ddd;
+    font-size: 0.75rem;
+    text-align: center;
 }
 
 .container {
@@ -41,38 +41,30 @@
     padding: 15px;
 }
 
-.links {
+.link-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.links .active {
-    background-color: rgba(255, 255, 255, 0.25);
-    box-sizing: border-box;
-    border-radius: 10px;
-    padding: 5px 13px;
-}
-
-.links a {
+.link-container a {
     display: block;
 }
 
-.links > div {
-    align-items: center;
-    display: flex;
+.link-container > div {
     margin-right: 15px;
 }
 
-.links > div:last-child {
+.link-container > div:last-child {
     margin-right: 0;
 }
 
-.links a {
+.link-container a {
     color: #fff;
     text-decoration: none;
 }
 
-.logo a {
-    font-weight: bold;
+.link-container .logo {
+    border-right: 2px solid rgba(255, 255, 255, 0.25);
+    padding-right: 15px;
 }
