@@ -30,6 +30,7 @@ namespace Hyve.Migrations {
             AddUsers();
             AddPostTypes();
             AddPosts();
+            AddComments();
         }
 
         private void AddRoles() {
@@ -155,6 +156,53 @@ namespace Hyve.Migrations {
                     });
                 }
 
+                db.SaveChanges();
+            }
+        }
+
+        private void AddComments() {
+            using (HyveDbContext db = new HyveDbContext()) {
+                User user1 = db.Users.Where(x => x.UserName == "user1").First();
+                User user2 = db.Users.Where(x => x.UserName == "user2").First();
+                Post post = db.Posts.Where(x => x.Id == 1).First();
+                
+                Comment commentChild = new Comment() {
+                    DateCreatedUtc = DateTime.Now,
+                    DateUpdatedUtc = DateTime.Now,
+                    Content = "This is your reply...",
+                    Post = post,
+                    CreatedBy = user2,
+                    Comments = null,
+                };
+
+                Comment parentComment1 = new Comment() {
+                    DateCreatedUtc = DateTime.Now,
+                    DateUpdatedUtc = DateTime.Now,
+                    Content = "Someone reply to me...",
+                    Post = post,
+                    CreatedBy = user1,
+                    Comments = new List<Comment>() {
+                        commentChild
+                    },
+                };
+
+                Comment parentComment2 = new Comment() {
+                    DateCreatedUtc = DateTime.Now,
+                    DateUpdatedUtc = DateTime.Now,
+                    Content = "A comment without a reply...",
+                    Post = post,
+                    CreatedBy = user2,
+                    Comments = null,
+                };
+
+                List<Comment> comments = new List<Comment>() {
+                    commentChild,
+                    parentComment1,
+                    parentComment2
+                };
+
+                db.Comments.AddRange(comments);
+                post.Comments.Concat(comments);
                 db.SaveChanges();
             }
         }
