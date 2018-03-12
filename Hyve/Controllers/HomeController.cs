@@ -16,6 +16,11 @@ namespace Hyve.Controllers {
         }
 
         [HttpGet]
+        public ActionResult Ask() {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult Register() {
             return View(new RegisterViewModel());
         }
