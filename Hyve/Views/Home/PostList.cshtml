@@ -1,0 +1,20 @@
+﻿@model Hyve.ViewModels.Home.PostListViewModel
+
+@using Hyve.Models;
+
+<div class="post-list">
+    @foreach (Post post in Model.Posts) {
+        <div class="item">
+            <div class="title">
+                @if (!string.IsNullOrEmpty(post.ExternalLink)) {
+                    <a href="@post.ExternalLink">@post.Title</a>
+                } else {
+                    @Html.ActionLink(post.Title, "Post", "Home", new { id = post.Id }, null)
+                }
+            </div>
+            <div class="info">
+                (sub information)
+            </div>
+        </div>
+    }
+</div>

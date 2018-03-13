@@ -1,5 +1,7 @@
 ﻿@model Hyve.ViewModels.Home.PostViewModel
 
-<div>
-    <h2>@Model.Post.Title</h2>
+<div class="post-view">
+    <h2 class="title">@Model.Post.Title</h2>
+    <div class="info">(some byline info)</div>
+    <div class="content">@Model.Post.Content</div>
 </div>

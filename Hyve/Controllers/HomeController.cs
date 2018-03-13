@@ -1,4 +1,5 @@
 ﻿using Hyve.App_Start;
+using Hyve.Enums;
 using Hyve.Models;
 using Hyve.ViewModels.Home;
 using Microsoft.AspNet.Identity.Owin;
@@ -14,20 +15,25 @@ namespace Hyve.Controllers {
         [HttpGet]
         public ActionResult Index() {
             PostListViewModel model = new PostListViewModel();
-            model.Posts = db.Posts.ToList();
-            return View(model);
+            model.Posts = db.Posts.Where(p => p.PostType.Name == PostTypes.Link).ToList();
+            return View("PostList", model);
         }
 
         [HttpGet]
         public ActionResult Post(int id) {
             PostViewModel model = new PostViewModel();
-            model.Post = db.Posts.Where(p => p.Id == id).FirstOrDefault();
+            Post post = db.Posts.Where(p => p.Id == id).FirstOrDefault();
+            model.Post = post;
+            ViewBag.Title = post.Title;
             return View(model);
         }
 
         [HttpGet]
         public ActionResult Ask() {
-            return View();
+            PostListViewModel model = new PostListViewModel();
+            model.Posts = db.Posts.Where(p => p.PostType.Name == PostTypes.Question).ToList();
+            ViewBag.Title = "Ask";
+            return View("PostList", model);
         }
 
         [HttpGet]

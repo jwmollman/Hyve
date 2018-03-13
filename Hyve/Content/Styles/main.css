@@ -39,10 +39,10 @@ a:visited {
 }
 
 #footer {
+    color: #aaa;
 }
 
 #footer .container {
-    border-top: 1px solid #ddd;
     font-size: 0.75rem;
     text-align: center;
 }
@@ -82,29 +82,39 @@ a:visited {
     padding-right: 15px;
 }
 
-.listing {
+.post-list {
 }
 
-.listing .item {
+.post-list .item {
     display: flex;
     border-bottom: 1px solid #eee;
     flex-direction: column;
     padding: 12px 0;
 }
 
-.listing .item:hover {
+.post-list .item:hover {
     background-color: #f9f9f9;
 }
 
-.listing .item .title {
+.post-list .item .title {
     font-weight: bold;
 }
 
-.listing .item .title a {
+.post-list .item .title a {
     text-decoration: none;
 }
 
-.listing .item .info {
+.post-list .item .info {
     font-size: 0.75rem;
     margin-top: 5px;
+}
+
+.post-view .title {
+    margin-bottom: 4px;
+}
+
+.post-view .info {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 25px;
+    padding-bottom: 8px;
 }
