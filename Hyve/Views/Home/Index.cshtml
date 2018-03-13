@@ -27,7 +27,7 @@
                             }
                         </div>
                         <div class="actions">
-                            @Html.ActionLink("[number] comments", "Post", "Home", new { id = post.Id }, null)
+                            @Html.ActionLink($"{post.Comments.Count} comments", "Post", "Home", new { id = post.Id }, null)
                             <a href="">permalink</a>
                             <a href="">report</a>
                         </div>

@@ -4,6 +4,7 @@ using Hyve.ViewModels.Home;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -14,7 +15,7 @@ namespace Hyve.Controllers {
         [HttpGet]
         public ActionResult Index() {
             PostListViewModel model = new PostListViewModel();
-            model.Posts = db.Posts.ToList();
+            model.Posts = db.Posts.Include(p => p.Comments).ToList();
             return View(model);
         }
 
