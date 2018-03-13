@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace Hyve.ViewModels.Home {
-    public class PostListingViewModel {
+    public class PostListViewModel {
         public IList<Post> Posts { get; set; }
     }
 }

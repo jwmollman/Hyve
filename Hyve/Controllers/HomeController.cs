@@ -13,7 +13,7 @@ namespace Hyve.Controllers {
     public class HomeController : BaseController {
         [HttpGet]
         public ActionResult Index() {
-            PostListingViewModel model = new PostListingViewModel();
+            PostListViewModel model = new PostListViewModel();
             model.Posts = db.Posts.ToList();
             return View(model);
         }
