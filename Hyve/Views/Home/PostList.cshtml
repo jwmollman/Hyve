@@ -4,12 +4,30 @@
 
 @if (Model.Posts.Count > 0) {
     <div class="post-list">
-        @foreach (Post post in Model.Posts) {
+        @for (int i = 0; i < Model.Posts.Count; i++) {
+            Post post = Model.Posts[i];
             <div class="item">
-                <div class="title">
-                    
+                <div class="number">
+                    @($"{i + 1}.")
                 </div>
-                <div class="sub-info">
+                <div class="content">
+                    <div class="title">
+                        @post.Title
+                    </div>
+                    <div class="sub-info">
+                        <div class="by-line">
+                            @if (post.Rating == 1) {
+                                @($"{post.Rating} point posted ${post.DateCreatedUtc} by [user]")
+                            } else {
+                                @($"{post.Rating} points posted ${post.DateCreatedUtc} by [user]")
+                            }
+                        </div>
+                        <div class="actions">
+                            @Html.ActionLink("[number] comments", "Post", "Home", new { id = post.Id }, null)
+                            <a href="">permalink</a>
+                            <a href="">report</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         }

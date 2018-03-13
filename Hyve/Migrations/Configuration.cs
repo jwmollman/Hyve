@@ -123,17 +123,7 @@ namespace Hyve.Migrations {
                         DateUpdatedUtc = DateTime.Now,
                         Title = $"This is post #{i}",
                         LinkUrl = "https://www.google.com",
-                        CreatedBy = user1,
-                        Comments = new List<Comment>(),
-                    });
-                }
-
-                for (int i = 0; i < 30; i++) {
-                    db.Posts.Add(new Post() {
-                        DateCreatedUtc = DateTime.Now,
-                        DateUpdatedUtc = DateTime.Now,
-                        Title = $"This is post #{i}",
-                        LinkUrl = "https://www.google.com",
+                        Rating = 1,
                         CreatedBy = user1,
                         Comments = new List<Comment>(),
                     });

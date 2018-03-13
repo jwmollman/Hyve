@@ -15,6 +15,8 @@ namespace Hyve.Models {
 
         public string LinkUrl { get; set; }
 
+        public int Rating { get; set; }
+
         public User CreatedBy { get; set; }
         
         public IList<Comment> Comments { get; set; }
