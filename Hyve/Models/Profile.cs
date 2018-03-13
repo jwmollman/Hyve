@@ -8,12 +8,12 @@ namespace Hyve.Models {
         [ForeignKey("User")]
         public string UserId { get; set; }
 
+        public User User { get; set; }
+
         public DateTime DateCreatedUtc { get; set; }
 
         public DateTime DateUpdatedUtc { get; set; }
 
         public string Bio { get; set; }
-
-        public User User { get; set; }
     }
 }

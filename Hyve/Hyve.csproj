@@ -152,7 +152,6 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Enums\PostTypes.cs" />
     <Compile Include="Enums\Roles.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,11 +196,18 @@
     <Compile Include="Migrations\201803120313465_AddExternalLinkToPost.Designer.cs">
       <DependentUpon>201803120313465_AddExternalLinkToPost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803130317219_RemovePostTypeEntity.cs" />
+    <Compile Include="Migrations\201803130317219_RemovePostTypeEntity.Designer.cs">
+      <DependentUpon>201803130317219_RemovePostTypeEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803130332225_EntityFieldCleanup.cs" />
+    <Compile Include="Migrations\201803130332225_EntityFieldCleanup.Designer.cs">
+      <DependentUpon>201803130332225_EntityFieldCleanup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Contexts\HyveDbContext.cs" />
     <Compile Include="Models\Post.cs" />
-    <Compile Include="Models\PostType.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -267,6 +273,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803120313465_AddExternalLinkToPost.resx">
       <DependentUpon>201803120313465_AddExternalLinkToPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803130317219_RemovePostTypeEntity.resx">
+      <DependentUpon>201803130317219_RemovePostTypeEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803130332225_EntityFieldCleanup.resx">
+      <DependentUpon>201803130332225_EntityFieldCleanup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

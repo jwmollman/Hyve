@@ -2,20 +2,16 @@
 
 <html lang="en-us">
     <head>
-        <title>
-            @if (ViewBag.Title != null) {
-                @Html.Raw($"{ViewBag.Title} &ndash; Hyve")
-            } else {
-                @("Hyve")
-            }
-        </title>
+        @if (ViewBag.Title == null) {
+            <title>hyve</title>
+        } else {
+            <title>@ViewBag.Title : hyve</title>
+        }
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-        @Styles.Render("~/styles/main")
+        @*@Styles.Render("~/styles/main")*@
 
         @RenderSection("ScriptsHeader", false)
     </head>
@@ -23,28 +19,16 @@
     <body>
         <div id="main">
             <div id="header">
-                <div class="container">
-                    <div class="link-container">
-                        <div class="logo">@Html.ActionLink("Hyve", "Index", "Home")</div>
-                        <div>@Html.ActionLink("Ask", "Ask", "Home")</div>
-                    </div>
-                    <div class="link-container">
-                        <div>@Html.ActionLink("Register", "Register", "Home")</div>
-                        <div>@Html.ActionLink("Log in", "Login", "Home")</div>
-                    </div>
-                </div>
+                header
             </div>
             <div id="content">
-                <div class="container">
-                    @RenderBody()
-                </div>
+                @RenderBody()
             </div>
             <div id="footer">
-                <div class="container">
-                    footer content
-                </div>
+                footer
             </div>
         </div>
+
         @RenderSection("ScriptsFooter", false)
     </body>
 </html>

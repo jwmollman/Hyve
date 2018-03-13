@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hyve.Models {
     public class Comment {
+        [Key]
         public int Id { get; set; }
 
         public DateTime DateCreatedUtc { get; set; }

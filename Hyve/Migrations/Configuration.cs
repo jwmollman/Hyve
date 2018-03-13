@@ -28,7 +28,6 @@ namespace Hyve.Migrations {
 
             AddRoles();
             AddUsers();
-            AddPostTypes();
             AddPosts();
             AddComments();
         }
@@ -114,16 +113,6 @@ namespace Hyve.Migrations {
             }
         }
 
-        private void AddPostTypes() {
-            using (HyveDbContext db = new HyveDbContext()) {
-                db.PostTypes.AddRange(new List<PostType>() {
-                    new PostType() { Name = PostTypes.Link },
-                    new PostType() { Name = PostTypes.Question },
-                });
-                db.SaveChanges();
-            }
-        }
-
         private void AddPosts() {
             using (HyveDbContext db = new HyveDbContext()) {
                 User user1 = db.Users.Where(x => x.UserName == "user1").First();
@@ -133,11 +122,8 @@ namespace Hyve.Migrations {
                         DateCreatedUtc = DateTime.Now,
                         DateUpdatedUtc = DateTime.Now,
                         Title = $"This is post #{i}",
-                        ExternalLink = "https://www.google.com",
-                        Content = null,
+                        LinkUrl = "https://www.google.com",
                         CreatedBy = user1,
-                        PostType = db.PostTypes.Where(x => x.Name == PostTypes.Link).First(),
-                        Enabled = true,
                         Comments = new List<Comment>(),
                     });
                 }
@@ -147,11 +133,8 @@ namespace Hyve.Migrations {
                         DateCreatedUtc = DateTime.Now,
                         DateUpdatedUtc = DateTime.Now,
                         Title = $"This is post #{i}",
-                        ExternalLink = null,
-                        Content = $"Content for post #{i}",
+                        LinkUrl = "https://www.google.com",
                         CreatedBy = user1,
-                        PostType = db.PostTypes.Where(x => x.Name == PostTypes.Question).First(),
-                        Enabled = true,
                         Comments = new List<Comment>(),
                     });
                 }

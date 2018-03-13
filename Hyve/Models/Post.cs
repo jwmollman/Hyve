@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hyve.Models {
     public class Post {
+        [Key]
         public int Id { get; set; }
 
         public DateTime DateCreatedUtc { get; set; }
@@ -11,16 +13,10 @@ namespace Hyve.Models {
 
         public string Title { get; set; }
 
-        public string ExternalLink { get; set; }
-
-        public string Content { get; set; }
+        public string LinkUrl { get; set; }
 
         public User CreatedBy { get; set; }
-
-        public PostType PostType { get; set; }
-
-        public bool Enabled { get; set; }
-
+        
         public IList<Comment> Comments { get; set; }
     }
 }
