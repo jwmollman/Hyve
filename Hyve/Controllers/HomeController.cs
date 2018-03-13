@@ -15,13 +15,13 @@ namespace Hyve.Controllers {
         public ActionResult Index() {
             PostListViewModel model = new PostListViewModel();
             model.Posts = db.Posts.ToList();
-            return View("PostList", model);
+            return View(model);
         }
 
         [HttpGet]
         public ActionResult Post(int id) {
             PostViewModel model = new PostViewModel();
-            Post post = db.Posts.FirstOrDefault();
+            Post post = db.Posts.Where(p => p.Id == id).FirstOrDefault();
             model.Post = post;
             ViewBag.Title = post.Title;
             return View(model);

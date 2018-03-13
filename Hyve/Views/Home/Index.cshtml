@@ -10,6 +10,10 @@
                 <div class="number">
                     @($"{i + 1}.")
                 </div>
+                <div class="rating-options">
+                    <div class="up"></div>
+                    <div class="down"></div>
+                </div>
                 <div class="content">
                     <div class="title">
                         @post.Title
@@ -17,7 +21,7 @@
                     <div class="sub-info">
                         <div class="by-line">
                             @if (post.Rating == 1) {
-                                @($"{post.Rating} point posted ${post.DateCreatedUtc} by [user]")
+                                @($"{post.Rating} point posted {post.DateCreatedUtc} by [user]")
                             } else {
                                 @($"{post.Rating} points posted ${post.DateCreatedUtc} by [user]")
                             }

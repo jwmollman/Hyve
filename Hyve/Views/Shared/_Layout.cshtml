@@ -11,24 +11,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        @*@Styles.Render("~/styles/main")*@
-
+        @Styles.Render("~/styles/main")
         @RenderSection("ScriptsHeader", false)
     </head>
 
     <body>
-        <div id="main">
-            <div id="header">
+        <div class="main">
+            <div class="header">
                 header
             </div>
-            <div id="content">
+            <div class="content">
                 @RenderBody()
             </div>
-            <div id="footer">
+            <div class="footer">
                 footer
             </div>
         </div>
-
         @RenderSection("ScriptsFooter", false)
     </body>
 </html>
