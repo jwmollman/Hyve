@@ -5,6 +5,18 @@
     padding: 0;
 }
 
+a:link,
+a:hover,
+a:active {
+    text-decoration: underline;
+    color: #111;
+}
+
+a:visited {
+    text-decoration: underline;
+    color: #999;
+}
+
 #main {
     background-color: #fff;
     color: #111;
@@ -86,6 +98,10 @@
 
 .listing .item .title {
     font-weight: bold;
+}
+
+.listing .item .title a {
+    text-decoration: none;
 }
 
 .listing .item .info {
