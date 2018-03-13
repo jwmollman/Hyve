@@ -38,6 +38,7 @@ namespace Hyve.Controllers {
 
         [HttpGet]
         public ActionResult Register() {
+            ViewBag.Title = "Register";
             return View(new RegisterViewModel());
         }
 
@@ -65,7 +66,7 @@ namespace Hyve.Controllers {
             } catch (Exception e) {
                 ModelState.AddModelError(string.Empty, e.Message);
             }
-
+            
             return View(model);
         }
 
@@ -75,6 +76,7 @@ namespace Hyve.Controllers {
                 return RedirectToAction("Index", "Account");
             }
 
+            ViewBag.Title = "Log in";
             ViewBag.RedirectUrl = redirect;
             return View(new LoginViewModel());
         }
