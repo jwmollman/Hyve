@@ -14,7 +14,9 @@
                     }
                 </div>
                 <div class="info">
-                    (sub information)
+                    <div class="comments">
+                        @Html.ActionLink("21 comments", "Post", "Home", new { id = post.Id }, null)
+                    </div>
                 </div>
             </div>
         }
