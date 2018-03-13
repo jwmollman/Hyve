@@ -143,6 +143,7 @@ namespace Hyve.Migrations {
                     DateCreatedUtc = DateTime.Now,
                     DateUpdatedUtc = DateTime.Now,
                     Content = "This is your reply...",
+                    Rating = 1,
                     Post = post,
                     CreatedBy = user2,
                     Comments = null,
@@ -152,6 +153,7 @@ namespace Hyve.Migrations {
                     DateCreatedUtc = DateTime.Now,
                     DateUpdatedUtc = DateTime.Now,
                     Content = "Someone reply to me...",
+                    Rating = 1,
                     Post = post,
                     CreatedBy = user1,
                     Comments = new List<Comment>() {
@@ -163,6 +165,7 @@ namespace Hyve.Migrations {
                     DateCreatedUtc = DateTime.Now,
                     DateUpdatedUtc = DateTime.Now,
                     Content = "A comment without a reply...",
+                    Rating = 1,
                     Post = post,
                     CreatedBy = user2,
                     Comments = null,

@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201803130339081_AddPostRating.Designer.cs">
       <DependentUpon>201803130339081_AddPostRating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803130404334_AddCommentRating.cs" />
+    <Compile Include="Migrations\201803130404334_AddCommentRating.Designer.cs">
+      <DependentUpon>201803130404334_AddCommentRating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Contexts\HyveDbContext.cs" />
@@ -286,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803130339081_AddPostRating.resx">
       <DependentUpon>201803130339081_AddPostRating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803130404334_AddCommentRating.resx">
+      <DependentUpon>201803130404334_AddCommentRating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
