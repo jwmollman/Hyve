@@ -1,5 +1,16 @@
-﻿@{ 
+﻿@model Hyve.ViewModels.Home.PostListingViewModel
+
+@using Hyve.Models;
+
+@{ 
     ViewBag.Title = "Home";
 }
 
-(post listing - links)
+<div class="listing">
+    @foreach (Post post in Model.Posts) {
+        <div class="item">
+            <div class="title">@post.Title</div>
+            <div class="info">(sub information)</div>
+        </div>
+    }
+</div>

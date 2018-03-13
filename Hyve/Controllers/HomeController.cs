@@ -4,6 +4,7 @@ using Hyve.ViewModels.Home;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -12,7 +13,9 @@ namespace Hyve.Controllers {
     public class HomeController : BaseController {
         [HttpGet]
         public ActionResult Index() {
-            return View();
+            PostListingViewModel model = new PostListingViewModel();
+            model.Posts = db.Posts.ToList();
+            return View(model);
         }
 
         [HttpGet]

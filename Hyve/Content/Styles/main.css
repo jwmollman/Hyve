@@ -61,10 +61,34 @@
 
 .link-container a {
     color: #fff;
+    font-weight: bold;
     text-decoration: none;
 }
 
 .link-container .logo {
     border-right: 2px solid rgba(255, 255, 255, 0.25);
     padding-right: 15px;
+}
+
+.listing {
+}
+
+.listing .item {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    flex-direction: column;
+    padding: 12px 0;
+}
+
+.listing .item:hover {
+    background-color: #f9f9f9;
+}
+
+.listing .item .title {
+    font-weight: bold;
+}
+
+.listing .item .info {
+    font-size: 0.75rem;
+    margin-top: 5px;
 }

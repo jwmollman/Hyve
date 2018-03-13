@@ -208,6 +208,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Account\DashboardViewModel.cs" />
     <Compile Include="ViewModels\Home\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Home\PostListingViewModel.cs" />
     <Compile Include="ViewModels\Home\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
