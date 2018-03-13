@@ -9,7 +9,9 @@
 <div class="listing">
     @foreach (Post post in Model.Posts) {
         <div class="item">
-            <div class="title">@post.Title</div>
+            <div class="title">
+                @Html.ActionLink(post.Title, "Post", "Home", new { id = post.Id }, null)
+            </div>
             <div class="info">(sub information)</div>
         </div>
     }

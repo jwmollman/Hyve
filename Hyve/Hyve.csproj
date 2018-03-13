@@ -209,6 +209,7 @@
     <Compile Include="ViewModels\Account\DashboardViewModel.cs" />
     <Compile Include="ViewModels\Home\LoginViewModel.cs" />
     <Compile Include="ViewModels\Home\PostListingViewModel.cs" />
+    <Compile Include="ViewModels\Home\PostViewModel.cs" />
     <Compile Include="ViewModels\Home\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +225,7 @@
     <Content Include="Views\Home\LockedOut.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Home\Ask.cshtml" />
+    <Content Include="Views\Home\Post.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

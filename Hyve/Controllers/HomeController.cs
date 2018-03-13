@@ -19,6 +19,13 @@ namespace Hyve.Controllers {
         }
 
         [HttpGet]
+        public ActionResult Post(int id) {
+            PostViewModel model = new PostViewModel();
+            model.Post = db.Posts.Where(p => p.Id == id).FirstOrDefault();
+            return View(model);
+        }
+
+        [HttpGet]
         public ActionResult Ask() {
             return View();
         }

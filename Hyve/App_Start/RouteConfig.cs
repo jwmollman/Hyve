@@ -15,8 +15,8 @@ namespace Hyve.App_Start {
 
             routes.MapRoute(
                 name: "Default",
-                url: "{action}",
-                defaults: new { controller = "Home", action = "Index" }
+                url: "{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
