@@ -1,0 +1,34 @@
+﻿@model Hyve.ViewModels.Home.UserViewModel
+
+@using Hyve.Models;
+
+<div class="profile">
+    account created on @Model.User.Profile.DateCreatedUtc.ToLocalTime()
+    @Model.User.Profile.Bio
+</div>
+
+<p>showing comments for @Model.User.UserName</p>
+
+@if (Model.User.Posts?.Count > 0) {
+    <div class="posts">
+        @foreach (Post post in Model.User.Posts) {
+            <div class="post">
+                <a href="@post.LinkUrl">@post.Title</a>
+            </div>
+        }
+    </div>
+} else {
+    <p>This user has no posts</p>
+}
+
+@if (Model.User.Comments?.Count > 0) {
+    <div class="comments">
+        @foreach (Comment comment in Model.User.Comments) {
+            <div class="comment">
+                @comment.Content
+            </div>
+        }
+    </div>
+} else {
+    <p>This user has no comments</p>
+}

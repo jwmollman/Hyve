@@ -37,6 +37,17 @@ namespace Hyve.Controllers {
         }
 
         [HttpGet]
+        public new ActionResult User(string id) {
+            UserViewModel model = new UserViewModel();
+            model.User = db.Users
+                .Where(u => u.UserName == id)
+                .Include(u => u.Profile)
+                .Include(u => u.Posts)
+                .FirstOrDefault();
+            return View(model);
+        }
+
+        [HttpGet]
         public ActionResult Register() {
             ViewBag.Title = "Register";
             return View(new RegisterViewModel());
@@ -72,7 +83,7 @@ namespace Hyve.Controllers {
 
         [HttpGet]
         public ActionResult Login(string redirect) {
-            if (User.Identity.IsAuthenticated) {
+            if (base.User.Identity.IsAuthenticated) {
                 return RedirectToAction("Index", "Account");
             }
 
