@@ -1,3 +1,3 @@
 # Hyve
 
-An ASP.NET MVC application built from scratch with similar functionality to Hacker News.
+A circa 2005 Reddit clone built from scratch with ASP.NET MVC.
