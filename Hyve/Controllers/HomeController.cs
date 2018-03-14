@@ -4,6 +4,7 @@ using Hyve.ViewModels.Home;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,14 +16,21 @@ namespace Hyve.Controllers {
         [HttpGet]
         public ActionResult Index() {
             PostListViewModel model = new PostListViewModel();
-            model.Posts = db.Posts.Include(p => p.Comments).ToList();
+            model.Posts = db.Posts
+                .Include(p => p.CreatedBy)
+                .Include(p => p.Comments)
+                .ToList();
             return View(model);
         }
 
         [HttpGet]
         public ActionResult Post(int id) {
             PostViewModel model = new PostViewModel();
-            Post post = db.Posts.Where(p => p.Id == id).FirstOrDefault();
+            Post post = db.Posts
+                .Where(p => p.Id == id)
+                .Include(p => p.CreatedBy)
+                .Include(p => p.Comments)
+                .FirstOrDefault();
             model.Post = post;
             ViewBag.Title = post.Title;
             return View(model);

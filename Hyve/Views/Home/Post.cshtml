@@ -1,12 +1,7 @@
 ﻿@model Hyve.ViewModels.Home.PostViewModel
 
 <div class="post-view">
-    <h2 class="title">
-        @Html.ActionLink(Model.Post.Title, "Post", "Home", new { id = Model.Post.Id }, null)
-    </h2>
-    <div class="by-line">
-        (some byline info)
-    </div>
+    @Html.Partial("Partials/_PostSubInfo", Model.Post)
     <div class="comments">
 
     </div>

@@ -1,11 +1,8 @@
 ﻿@model Hyve.ViewModels.Home.PostListViewModel
 
-@using Hyve.Models;
-
 @if (Model.Posts.Count > 0) {
     <div class="post-list">
-        @for (int i = 0; i < Model.Posts.Count; i++) {
-            Post post = Model.Posts[i];
+        @for (int i = 0; i < Model.Posts?.Count; i++) {
             <div class="item">
                 <div class="number">
                     @($"{i + 1}.")
@@ -14,28 +11,10 @@
                     <div class="up"></div>
                     <div class="down"></div>
                 </div>
-                <div class="content">
-                    <div class="title">
-                        @post.Title
-                    </div>
-                    <div class="sub-info">
-                        <div class="by-line">
-                            @if (post.Rating == 1) {
-                                @($"{post.Rating} point posted {post.DateCreatedUtc} by [user]")
-                            } else {
-                                @($"{post.Rating} points posted ${post.DateCreatedUtc} by [user]")
-                            }
-                        </div>
-                        <div class="actions">
-                            @Html.ActionLink($"{post.Comments.Count} comments", "Post", "Home", new { id = post.Id }, null)
-                            <a href="">permalink</a>
-                            <a href="">report</a>
-                        </div>
-                    </div>
-                </div>
+                @Html.Partial("Partials/_PostSubInfo", Model.Posts[0])
             </div>
         }
     </div>
 } else {
-    <p>No posts have been made</p>
+    <p>There are no posts</p>
 }

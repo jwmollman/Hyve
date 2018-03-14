@@ -242,6 +242,7 @@
     <Content Include="Views\Home\LockedOut.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Home\Post.cshtml" />
+    <Content Include="Views\Home\Partials\_PostSubInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
