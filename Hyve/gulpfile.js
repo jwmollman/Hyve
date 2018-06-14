@@ -57,8 +57,8 @@ gulp.task("fonts", function () {
 // Setup BrowserSync
 gulp.task("sync", function () {
     browserSync.init({
-        proxy: "http://localhost:12259/",
-        host: "localhost"
+        proxy: config.browserSyncSettings.proxy,
+        host: config.browserSyncSettings.host
     });
 });
 
@@ -70,7 +70,7 @@ gulp.task("watch", ["sass", "js", "fonts", "sync"], function () {
 });
 
 // Concatenate + minify everything (ready for release)
-gulp.task("release", ["sass-minify", "js-minify", "images"]);
+gulp.task("release", ["sass-minify", "js-minify", "images", "fonts"]);
 
 // Default
 gulp.task("default", ["watch"])

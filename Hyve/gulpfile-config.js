@@ -1,4 +1,4 @@
-// Common Gulp configuration
+// Gulp configuration
 
 module.exports = {
     srcPath: "_src",
@@ -11,5 +11,9 @@ module.exports = {
         scss: "_src/scss/**/*.scss",
         js: "_src/js/**/*.js",
         cshtml: "Views/**/*.cshtml"
+    },
+    browserSyncSettings: {
+        proxy: "http://localhost:12259/",
+        host: "localhost"
     },
 };
