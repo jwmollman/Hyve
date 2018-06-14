@@ -7,6 +7,7 @@ var uglify = require("gulp-uglify");
 var babel = require("gulp-babel");
 var imagemin = require("gulp-imagemin");
 var cache = require("gulp-cache");
+var rev = require("gulp-rev");
 var autoprefixer = require("gulp-autoprefixer");
 var del = require("del");
 var runSequence = require("run-sequence");
@@ -27,7 +28,13 @@ gulp.task("sass-min", function () {
         .pipe(autoprefixer())
         .pipe(concat(config.concattedMinifiedCssFilename))
         .pipe(cleanCss())
-        .pipe(gulp.dest(config.destPath + "/css/"));
+        .pipe(rev())
+        .pipe(gulp.dest(config.destPath + "/css/"))
+        .pipe(rev.manifest(config.destPath + "/rev-manifest.json", {
+            base: process.cwd() + "/" + config.destPath,
+            merge: true,
+        }))
+        .pipe(gulp.dest(config.destPath));
 });
 
 gulp.task("js", function () {
@@ -42,7 +49,13 @@ gulp.task("js-min", function () {
         .pipe(babel())
         .pipe(concat(config.concattedMinifiedJsFilename))
         .pipe(uglify())
-        .pipe(gulp.dest(config.destPath + "/js/"));
+        .pipe(rev())
+        .pipe(gulp.dest(config.destPath + "/js/"))
+        .pipe(rev.manifest(config.destPath + "/rev-manifest.json", {
+            base: process.cwd() + "/" + config.destPath,
+            merge: true,
+        }))
+        .pipe(gulp.dest(config.destPath));
 });
 
 gulp.task("images", function () {
@@ -63,7 +76,7 @@ gulp.task("sync", function () {
     });
 });
 
-gulp.task("watch", ["clean", "sass", "js", "fonts", "sync"], function () {
+gulp.task("watch", ["sass", "js", "images", "fonts", "sync"], function () {
     gulp.watch(config.watchPaths.scss, ["sass"]);
     gulp.watch(config.watchPaths.js, browserSync.reload);
     gulp.watch(config.watchPaths.cshtml, browserSync.reload);
@@ -76,7 +89,7 @@ gulp.task("clean", function () {
 //gulp.task("build", ["clean", "sass-min", "js-min", "images", "fonts"]);
 gulp.task("build", function (cb) {
     // Make sure 'clean' runs first, then all the others
-    runSequence("clean", ["sass-min", "js-min", "images", "fonts"], cb);
+    runSequence("clean", "sass-min", "js-min", "images", "fonts", cb);
 });
 
 gulp.task("default", ["watch"]);
