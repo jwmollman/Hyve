@@ -1,8 +1,22 @@
 ﻿@model Hyve.ViewModels.Home.PostViewModel
 
+@using Hyve.Models;
+
 <div class="post-view">
     @Html.Partial("Partials/_PostSubInfo", Model.Post)
-    <div class="comments">
 
-    </div>
+    @if (Model.Post.Comments.Count > 0) {
+        <div class="comments">
+            @foreach (Comment comment in Model.Post.Comments) {
+                <div class="comment">
+                    <div>@comment.Content</div>
+                    @if (comment.Comments?.Count > 0) {
+                        <div>@comment.Content</div>
+                    }
+                </div>
+            }
+        </div>
+    } else {
+        <p>no comments</p>
+    }
 </div>
