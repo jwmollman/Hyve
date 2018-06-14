@@ -137,13 +137,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Styles\main.css" />
     <Content Include="Global.asax" />
-    <None Include="Content\Scripts\Lib\jQuery\jquery-3.3.1.intellisense.js" />
-    <Content Include="Content\Scripts\Lib\jQuery\jquery-3.3.1.js" />
-    <Content Include="Content\Scripts\Lib\jQuery\jquery-3.3.1.min.js" />
-    <Content Include="Content\Scripts\Lib\jQuery\jquery-3.3.1.slim.js" />
-    <Content Include="Content\Scripts\Lib\jQuery\jquery-3.3.1.slim.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -238,8 +232,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Content\Scripts\Lib\jQuery\jquery-3.3.1.slim.min.map" />
-    <Content Include="Content\Scripts\Lib\jQuery\jquery-3.3.1.min.map" />
     <Content Include="Views\Home\LockedOut.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Home\Post.cshtml" />
@@ -254,7 +246,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Styles\Lib\" />
     <Folder Include="Validators\" />
   </ItemGroup>
   <ItemGroup>

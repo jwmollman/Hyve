@@ -22,7 +22,7 @@ gulp.task("sass-minify", function () {
     return gulp.src(config.srcPath + "/scss/**/*.scss")
         .pipe(sass())
         .pipe(concat(config.concattedMinifiedCssFilename))
-        .pipe(cleanCss()) // minify
+        .pipe(cleanCss())
         .pipe(gulp.dest(config.destPath + "/css/"));
 });
 

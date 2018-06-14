@@ -10,10 +10,10 @@ module.exports = {
     watchPaths: {
         scss: "_src/scss/**/*.scss",
         js: "_src/js/**/*.js",
-        cshtml: "Views/**/*.cshtml"
+        cshtml: "Views/**/*.cshtml",
     },
     browserSyncSettings: {
         proxy: "http://localhost:12259/",
-        host: "localhost"
+        host: "localhost",
     },
 };
