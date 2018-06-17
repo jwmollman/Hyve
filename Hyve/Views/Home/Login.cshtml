@@ -10,7 +10,6 @@
 <div class="login-form-container">
     <div class="inner">
         <h1>@ViewBag.Title</h1>
-
         @Html.ValidationSummary(true)
         @using (Html.BeginForm("Login", "Home", new { redirect = ViewBag.RedirectUrl }, FormMethod.Post, new { @class = "login-form" })) {
             @Html.AntiForgeryToken()
@@ -35,14 +34,14 @@
 
         @if (!isProduction) {
             <div style="margin-top: 30px; text-align: center;">
-            @using (Html.BeginForm("Login", "Home", FormMethod.Post)) {
-                @Html.AntiForgeryToken()
-                string username = "user1";
-                string password = "password";
-                <input type="text" name="Username" value="@username" style="display: none;">
-                <input type="Password" name="Password" value="@password" style="display: none;">
-                <button type="submit">log in as @username</button>
-            }
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post)) {
+                    @Html.AntiForgeryToken()
+                    string username = "user1";
+                    string password = "password";
+                    <input type="text" name="Username" value="@username" style="display: none;">
+                    <input type="password" name="Password" value="@password" style="display: none;">
+                    <button type="submit">log in as @username</button>
+                }
             </div>
         }
     </div>
