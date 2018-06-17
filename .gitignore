@@ -322,4 +322,4 @@ ASALocalRun/
 *.binlog
 
 # Specific to this project
-assets/
+Content/

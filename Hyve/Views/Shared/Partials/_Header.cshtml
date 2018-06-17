@@ -1,0 +1,25 @@
+﻿@using System.Web;
+
+<header>
+    <div class="spacer">
+        <h1 class="site-title">@Html.ActionLink("Hyve", "Index", "Home")</h1>
+        <nav>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated) {
+                <div class="auth-links">
+                    <span id="username">@HttpContext.Current.User.Identity.Name</span>
+                    <div id="auth-nav" class="options">
+                        <ul>
+                            <li>@Html.ActionLink("Profile", "Index", "Account")</li>
+                            <li>@Html.ActionLink("Log out", "Logout", "Account")</li>
+                        </ul>
+                    </div>
+                </div>
+            } else {
+                <ul class="no-auth-links">
+                    <li class="nav-link">@Html.ActionLink("Log in", "Login")</li>
+                    <li class="nav-link">@Html.ActionLink("Register", "Register")</li>
+                </ul>
+            }
+        </nav>
+    </div>
+</header>

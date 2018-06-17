@@ -1,10 +1,10 @@
 var config = require("./gulpfile-config");
 var gulp = require("gulp");
+var watch = require("gulp-watch");
 var sass = require("gulp-sass");
 var concat = require("gulp-concat");
 var cleanCss = require("gulp-clean-css");
 var uglify = require("gulp-uglify");
-var babel = require("gulp-babel");
 var imagemin = require("gulp-imagemin");
 var cache = require("gulp-cache");
 var rev = require("gulp-rev");
@@ -14,8 +14,9 @@ var runSequence = require("run-sequence");
 var browserSync = require("browser-sync").create();
 
 gulp.task("sass", function () {
-    return gulp.src(config.srcPath + "/scss/**/*.scss")
+    return gulp.src(config.srcPath + "/scss/main.scss")
         .pipe(sass())
+        .on("error", onError)
         .pipe(autoprefixer())
         .pipe(concat(config.concattedCssFilename))
         .pipe(gulp.dest(config.destPath + "/css/"))
@@ -23,7 +24,7 @@ gulp.task("sass", function () {
 });
 
 gulp.task("sass-min", function () {
-    return gulp.src(config.srcPath + "/scss/**/*.scss")
+    return gulp.src(config.srcPath + "/scss/main.scss")
         .pipe(sass())
         .pipe(autoprefixer())
         .pipe(concat(config.concattedMinifiedCssFilename))
@@ -39,14 +40,13 @@ gulp.task("sass-min", function () {
 
 gulp.task("js", function () {
     return gulp.src(config.srcPath + "/js/**/*.js")
-        .pipe(babel())
         .pipe(concat(config.concattedJsFilename))
+        .on("error", onError)
         .pipe(gulp.dest(config.destPath + "/js/"));
 });
 
 gulp.task("js-min", function () {
     return gulp.src(config.srcPath + "/js/**/*.js")
-        .pipe(babel())
         .pipe(concat(config.concattedMinifiedJsFilename))
         .pipe(uglify())
         .pipe(rev())
@@ -77,9 +77,21 @@ gulp.task("sync", function () {
 });
 
 gulp.task("watch", ["sass", "js", "images", "fonts", "sync"], function () {
-    gulp.watch(config.watchPaths.scss, ["sass"]);
-    gulp.watch(config.watchPaths.js, browserSync.reload);
-    gulp.watch(config.watchPaths.cshtml, browserSync.reload);
+    //gulp.watch(config.watchPaths.scss, ["sass"]);
+    //gulp.watch(config.watchPaths.js, browserSync.reload);
+    //gulp.watch(config.watchPaths.cshtml, browserSync.reload);
+
+    // Because gulp.watch() can't watch for new/deleted files, use gulp-watch instead
+    watch(config.watchPaths.scss, function () {
+        gulp.start("sass");
+    });
+    watch(config.watchPaths.js, function () {
+        gulp.start("js");
+        browserSync.reload();
+    });
+    watch(config.watchPaths.cshtml, function () {
+        browserSync.reload();
+    });
 });
 
 gulp.task("clean", function () {
@@ -91,5 +103,10 @@ gulp.task("build", function (cb) {
     // Make sure 'clean' runs first, then all the others
     runSequence("clean", "sass-min", "js-min", "images", "fonts", cb);
 });
+
+function onError(error) {
+    console.log(error.toString());
+    this.emit("end");
+}
 
 gulp.task("default", ["watch"]);

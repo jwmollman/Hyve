@@ -32,7 +32,6 @@ namespace Hyve.Controllers {
                 .Include(p => p.Comments)
                 .FirstOrDefault();
             model.Post = post;
-            ViewBag.Title = post.Title;
             return View(model);
         }
 
@@ -49,7 +48,6 @@ namespace Hyve.Controllers {
 
         [HttpGet]
         public ActionResult Register() {
-            ViewBag.Title = "Register";
             return View(new RegisterViewModel());
         }
 
@@ -87,7 +85,6 @@ namespace Hyve.Controllers {
                 return RedirectToAction("Index", "Account");
             }
 
-            ViewBag.Title = "Log in";
             ViewBag.RedirectUrl = redirect;
             return View(new LoginViewModel());
         }
@@ -111,7 +108,7 @@ namespace Hyve.Controllers {
                         if (!string.IsNullOrEmpty(redirect)) {
                             return Redirect(redirect);
                         } else {
-                            return RedirectToAction("Index", "Account");
+                            return RedirectToAction("Index", "Home");
                         }
                     case SignInStatus.LockedOut:
                         return View("LockedOut");

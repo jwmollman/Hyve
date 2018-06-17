@@ -1,29 +1,49 @@
 ﻿@model Hyve.ViewModels.Home.LoginViewModel
 
-<h1>@ViewBag.Title</h1>
+@using System.Configuration;
 
-@Html.ValidationSummary()
-
-@using (Html.BeginForm("Login", "Home", new { redirect = ViewBag.RedirectUrl }, FormMethod.Post)) {
-    @Html.AntiForgeryToken()
-    <table>
-        <tr>
-            <td>@Html.LabelFor(m => m.Username)</td>
-            <td>@Html.TextBoxFor(m => m.Username)</td>
-            <td>@Html.ValidationMessageFor(m => m.Username)</td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.Password)</td>
-            <td>@Html.PasswordFor(m => m.Password)</td>
-            <td>@Html.ValidationMessageFor(m => m.Password)</td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.RememberMe)</td>
-            <td>@Html.CheckBoxFor(m => m.RememberMe)</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><button type="submit">log in</button></td>
-        </tr>
-    </table>
+@{
+    ViewBag.Title = "Login";
+    bool isProduction = Convert.ToBoolean(ConfigurationManager.AppSettings["ProductionMode"]);
 }
+
+<div class="login-form-container">
+    <div class="inner">
+        <h1>@ViewBag.Title</h1>
+
+        @Html.ValidationSummary(true)
+        @using (Html.BeginForm("Login", "Home", new { redirect = ViewBag.RedirectUrl }, FormMethod.Post, new { @class = "login-form" })) {
+            @Html.AntiForgeryToken()
+            <div class="field-container">
+                <div>@Html.LabelFor(m => m.Username)</div>
+                <div>@Html.TextBoxFor(m => m.Username)</div>
+                <div>@Html.ValidationMessageFor(m => m.Username)</div>
+            </div>
+            <div class="field-container">
+                <div>@Html.LabelFor(m => m.Password)</div>
+                <div>@Html.PasswordFor(m => m.Password)</div>
+                <div>@Html.ValidationMessageFor(m => m.Password)</div>
+            </div>
+            <div class="footer">
+                <div class="remember-me">
+                    @Html.LabelFor(m => m.RememberMe)
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                </div>
+                <div><button class="btn" type="submit">Log in</button></div>
+            </div>
+        }
+
+        @if (!isProduction) {
+            <div style="margin-top: 30px; text-align: center;">
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post)) {
+                @Html.AntiForgeryToken()
+                string username = "user1";
+                string password = "password";
+                <input type="text" name="Username" value="@username" style="display: none;">
+                <input type="Password" name="Password" value="@password" style="display: none;">
+                <button type="submit">log in as @username</button>
+            }
+            </div>
+        }
+    </div>
+</div>

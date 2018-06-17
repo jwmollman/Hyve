@@ -2,41 +2,28 @@
 
 <html lang="en-us">
     <head>
-        @if (ViewBag.Title == null) {
-            <title>hyve</title>
-        } else {
-            <title>@ViewBag.Title | hyve</title>
-        }
+        <title>@(ViewBag.Title == null ? "Hyve" : $"{ViewBag.Title} | Hyve")</title>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link href="~/assets/css/main.css" rel="stylesheet">
+        <link href="~/Content/css/main.css" rel="stylesheet">
 
         @RenderSection("ScriptsHeader", false)
     </head>
 
     <body>
-        <main class="wrapper">
-            <header>
-                <nav class="main-nav">
-                    <div class="title">
-                        <h1>Hyve</h1>
-                    </div>
-                    <div class="nav-links">
-                        <a href="">Sign up</a>
-                        <a href="">Log in</a>
-                    </div>
-                </nav>
-            </header>
+        <main>
+            @Html.Partial("Partials/_Header")
             <section class="main-content">
-                @RenderBody()
+                <div class="spacer">
+                    @RenderBody()
+                </div>
             </section>
-            <footer>
-                footer
-            </footer>
+            @Html.Partial("Partials/_Footer")
         </main>
+
+        <script src="~/Content/js/main.js"></script>
         @RenderSection("ScriptsFooter", false)
     </body>
 </html>

@@ -1,8 +1,6 @@
-// Gulp configuration
-
 module.exports = {
     srcPath: "_src",
-    destPath: "assets",
+    destPath: "Content",
     concattedCssFilename: "main.css",
     concattedJsFilename: "main.js",
     concattedMinifiedCssFilename: "main.min.css",

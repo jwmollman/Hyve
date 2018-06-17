@@ -1,20 +1,30 @@
 ﻿@model Hyve.ViewModels.Home.PostListViewModel
 
+@using Hyve.Models;
+
 @if (Model.Posts.Count > 0) {
     <div class="post-list">
-        @for (int i = 0; i < Model.Posts?.Count; i++) {
-            <div class="item">
-                <div class="number">
-                    @($"{i + 1}.")
+        @foreach (Post post in Model.Posts) {
+            <div class="post">
+                <div class="title"><a href="@post.LinkUrl">@post.Title</a></div>
+                <div class="meta">
+                    <span title="@post.DateCreatedUtc.ToString()">2 days ago</span>
+                        by @Html.ActionLink(post.CreatedBy.UserName, "User", new { id = post.CreatedBy.UserName })
+                        &middot; @Html.ActionLink(OutputCommentsText(post.Comments.Count), "Post", new { id = post.Id })
                 </div>
-                <div class="rating-options">
-                    <div class="up"></div>
-                    <div class="down"></div>
-                </div>
-                @Html.Partial("Partials/_PostSubInfo", Model.Posts[0])
             </div>
         }
     </div>
 } else {
-    <p>There are no posts</p>
+    <p>There are no posts.</p>
+}
+
+@functions {
+    public string OutputCommentsText(int count) {
+        if (count == 1) {
+            return $"{count} comment";
+        } else {
+            return $"{count} comments";
+        }
+    }
 }
