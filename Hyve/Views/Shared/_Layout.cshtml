@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using System.Configuration;
+@using Newtonsoft.Json;
+
+@{
+    bool isProduction = Convert.ToBoolean(ConfigurationManager.AppSettings["ProductionMode"]);
+    var rev = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(Server.MapPath("~/Content/rev-manifest.json")));
+}
+
+<!DOCTYPE html>
 
 <html lang="en-us">
     <head>
@@ -7,7 +15,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="~/Content/css/main.css" rel="stylesheet">
+        <link href="~/Content/css/@(isProduction ? rev["main.min.css"] : "main.css")" rel="stylesheet">
 
         @RenderSection("ScriptsHeader", false)
     </head>
@@ -23,7 +31,7 @@
             @Html.Partial("Partials/_Footer")
         </main>
 
-        <script src="~/Content/js/main.js"></script>
+        <script src="~/Content/js/@(isProduction ? rev["main.min.js"] : "main.js")"></script>
         @RenderSection("ScriptsFooter", false)
     </body>
 </html>
